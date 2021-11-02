@@ -86,7 +86,7 @@ div.item {
   	-webkit-box-shadow: 0px 0px 15px 4px #000;
       user-select: none;
       width: 160px;
-      min-height: 300px;
+      min-height: 160px;
 }
 
 span {
@@ -113,6 +113,11 @@ div.item img {
 div.item span#price {
     font-weight: bold;
     font-size: 2rem;
+    user-select: none;
+}
+div.item span#title {
+    font-weight: bold;
+    font-size: 1.5rem;
     user-select: none;
 }
 

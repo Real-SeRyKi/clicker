@@ -1,5 +1,5 @@
-var data = {points: 50, pointsbefore: null, items: {
-    test: {
+var data = {points: 1500000000000, pointsbefore: null, items: {
+    pointenhancer: {
         buff: {
             type: "clickUpgrd",
             value: 2
@@ -7,7 +7,7 @@ var data = {points: 50, pointsbefore: null, items: {
         quantity: 0,
         maxquantity: 5
     },
-    test1: {
+    pointinvestment: {
         buff: {
             type: "pps",
             value: 1
@@ -16,12 +16,27 @@ var data = {points: 50, pointsbefore: null, items: {
         maxquantity: 15
     }
 }}
-
+function nFormatter(num, digits) {
+    const lookup = [
+      { value: 1, symbol: "" },
+      { value: 1e3, symbol: "k" },
+      { value: 1e6, symbol: "M" },
+      { value: 1e9, symbol: "G" },
+      { value: 1e12, symbol: "T" },
+      { value: 1e15, symbol: "P" },
+      { value: 1e18, symbol: "E" }
+    ];
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    var item = lookup.slice().reverse().find(function(item) {
+      return num >= item.value;
+    });
+    return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+  }
 //function for rendering
 const update = () => {
-    $("#lbl-points").html(data.points)
+    $("#lbl-points").html(nFormatter(data.points, 2))
     $("div.shop").children('div').each((i, e) => {
-        if (data.points < $(e).find("span#price").text().replace("p", "") || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) {
+        if (data.points < parseInt($(e).find("span#price").attr("data-price"), 10) || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) {
             $(e).css("opacity", "50%")
         } else {
             $(e).css("opacity", "100%")
@@ -44,10 +59,9 @@ $(".btn-main").click(() => {
 
 $("div.shop").children('div').each((i, e) => {
     $(e).click(() => {
-        console.log($(e).find("span#price").text().replace("p", ""))
-        if (data.points < $(e).find("span#price").text().replace("p", "")) return
+        if (data.points < parseInt($(e).find("span#price").attr("data-price"), 10) || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) return
         data.items[$(e).attr("id")].quantity += 1;
-        data.points -= $(e).find("span#price").text().replace("p", "")
+        data.points -= parseInt($(e).find("span#price").attr("data-price"), 10)
         update()
     } )
 })
