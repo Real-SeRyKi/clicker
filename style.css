@@ -56,7 +56,7 @@ button.btn-main:hover {
 div.line {
     margin:0;
     width: 75%;
-position: fixed;
+position: relative;
 left: 50%;
 margin-left: -37.5%;
     height: 0px;

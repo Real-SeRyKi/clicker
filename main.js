@@ -140,6 +140,6 @@ setInterval(() => {
         return
     }
 
-    $(".pps").html(`pps: ${data.points - data.pointsbefore}`)
+    $(".pps").html(`pps: ${nFormatter(data.points - data.pointsbefore, 2)}`)
     data.pointsbefore = data.points
 }, 1000)
