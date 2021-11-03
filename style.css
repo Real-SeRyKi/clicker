@@ -6,6 +6,10 @@ html, body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    width: 0px;               /* width of the entire scrollbar */
+  }
+
 div.head {
     width: 100%;
     background-color: #5B21B6;
