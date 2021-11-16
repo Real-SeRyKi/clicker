@@ -1,0 +1,54 @@
+{
+  "points": 0,
+  "pointsbefore": null,
+  "items": {
+    "pointenhancer": {
+      "buff": {
+        "type": "clickUpgrd",
+        "value": 2
+      },
+      "quantity": 0,
+      "maxquantity": 5
+    },
+    "pointinvestment": {
+      "buff": {
+        "type": "pps",
+        "value": 1
+      },
+      "quantity": 0,
+      "maxquantity": 15
+    },
+    "lemonadestand": {
+      "buff": {
+        "type": "pps",
+        "value": 5
+      },
+      "quantity": 0,
+      "maxquantity": 15
+    },
+    "pointrefiner": {
+      "buff": {
+        "type": "clickUpgrd",
+        "value": 10
+      },
+      "quantity": 0,
+      "maxquantity": 15
+    },
+    "pointmine": {
+      "buff": {
+        "type": "pps",
+        "value": 20
+      },
+      "quantity": 0,
+      "maxquantity": 15
+    },
+    "pointfactory": {
+      "buff": {
+        "type": "pps",
+        "value": 100
+      },
+      "quantity": 0,
+      "maxquantity": 15
+    }
+  }
+}

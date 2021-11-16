@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <title>Clicker.</title>
+</head>
+
+<body>
+  <div class="head">
+    <h1 class="h1-title">Clicker</h1>
+  </div>
+  <div class="content">
+    <label for="lbl-points" class="lbl">You have</label>
+    <p id="lbl-points">0</p>
+    <label class="lbl">points!</label><br>
+    <button class="btn-main">Click!</button><br>
+    <label for="" class="pps">pps: 0</label>
+    <h2 class="lbl-shop">Shop</h2>
+    <div class="line"></div>
+    <div class="shop">
+      <div class="item hover" id="pointenhancer">
+        <span id="title">Point enhancer</span><br>
+        <span id="effect">Enhances your coins mined through button,<br>+2p when clicking button.</span><br>
+        <span data-price="50" id="price">50p</span><br>
+        <span id="quantity">Quantity: 0</span>
+
+      </div>
+      <div class="item hover" id="pointinvestment">
+        <span id="title">Point investment</span><br>
+        <span id="effect">You invest your coins,<br> it gives you steady income. <br> 1p per second</span><br>
+        <span data-price="200" id="price">200p</span><br>
+        <span id="quantity">Quantity: 0</span>
+
+      </div>
+      <div class="item hover" id="lemonadestand">
+        <span id="title">Lemonade stand</span><br>
+        <span id="effect">You build a lemonade<br> stand.<br>5p per second</span><br>
+        <span data-price="500" id="price">500p</span><br>
+        <span id="quantity">Quantity: 0</span>
+
+      </div>
+      <div class="item hover" id="pointrefiner">
+        <span id="title">Point refiner</span><br>
+        <span id="effect">You build a point refiner<br>+10p when clicking button</span><br>
+        <span data-price="1000" id="price">1Kp</span><br>
+        <span id="quantity">Quantity: 0</span>
+
+      </div>
+      <div class="item hover" id="pointmine">
+        <span id="title">Point mine</span><br>
+        <span id="effect">You build a point mine<br>20p per second</span><br>
+        <span data-price="2500" id="price">2.5Kp</span><br>
+        <span id="quantity">Quantity: 0</span>
+
+      </div>
+      <div class="item hover" id="pointfactory">
+        <span id="title">Point factory</span><br>
+        <span id="effect">You build a point factory<br>100p per second</span><br>
+        <span data-price="10000" id="price">10Kp</span><br>
+        <span id="quantity">Quantity: 0</span>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

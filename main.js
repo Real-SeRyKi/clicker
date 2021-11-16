@@ -1,57 +1,21 @@
-var data = {
-    points: 0,
-    pointsbefore: null,
-    items: {
-        pointenhancer: {
+//$.getJSON("config.json", (data) => {
+    let data = {
+        points: 0,
+        pointsbefore: null,
+        items: {
+          pointenhancer: {
             buff: {
-                type: "clickUpgrd",
-                value: 2
+              type: "clickUpgrd",
+              value: 2
             },
             quantity: 0,
-            maxquantity: 5
-        },
-        pointinvestment: {
-            buff: {
-                type: "pps",
-                value: 1
-            },
-            quantity: 0,
-            maxquantity: 15
-        },
-        lemonadestand: {
-            buff: {
-                type: "pps",
-                value: 5
-            },
-            quantity: 0,
-            maxquantity: 15
-        },
-        pointrefiner: {
-            buff: {
-                type: "clickUpgrd",
-                value: 10
-            },
-            quantity: 0,
-            maxquantity: 15
-        },
-        pointmine: {
-            buff: {
-                type: "pps",
-                value: 20
-            },
-            quantity: 0,
-            maxquantity: 15
-        },
-        pointfactory: {
-            buff: {
-                type: "pps",
-                value: 100
-            },
-            quantity: 0,
-            maxquantity: 15
+            maxquantity: 5,
+            price: 50,
+            titlee: "Point enhancer",
+            description: "Enhances your coins mined through button,<br>+2p when clicking button."
+          }
         }
-    }
-}
+      }
 
 function nFormatter(num, digits) {
     const lookup = [{
@@ -89,11 +53,43 @@ function nFormatter(num, digits) {
     });
     return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
 }
+
+//Add items to shop
+for (i = 0; Object.keys(data.items).length > 0; i++) {
+    let div = document.createElement("div")
+    div.setAttribute("id", Object.keys(data.items)[i])
+    div.setAttribute("class", "item hover")
+
+    let title = document.createElement("span")
+    title.innerText = data.items[Object.keys(data.items)[i]]["titlee"]
+    title.setAttribute("class", "title")
+
+    let desc = document.createElement("span")
+    desc.innerHTML = data.items[Object.keys(data.items)[i]].description
+
+    let price = document.createElement("span")
+    price.innerText = data.items[Object.keys(data.items)[i]].price + "p"
+    price.setAttribute("class", "price")
+
+    let quantity = document.createElement("span")
+    quantity.innerText =  "Quantity: " + data.items[Object.keys(data.items)[i]].quantity
+
+    div.appendChild(title)
+    div.appendChild(document.createElement("br"))
+    div.appendChild(desc)
+    div.appendChild(document.createElement("br"))
+    div.appendChild(price)
+    div.appendChild(document.createElement("br"))
+    div.appendChild(quantity)
+
+    document.getElementsByClassName("shop")[0].appendChild(div)    
+}
+
 //function for rendering
 const update = () => {
     $("#lbl-points").html(nFormatter(data.points, 2))
     $("div.shop").children('div').each((i, e) => {
-        if (data.points < parseInt($(e).find("span#price").attr("data-price"), 10) || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) {
+        if (data.points < data.items[$(e).attr("id")].price || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) {
             $(e).css("opacity", "25%")
             $(e).removeClass("hover")
         } else {
@@ -118,9 +114,9 @@ $(".btn-main").click(() => {
 
 $("div.shop").children('div').each((i, e) => {
     $(e).click(() => {
-        if (data.points < parseInt($(e).find("span#price").attr("data-price"), 10) || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) return
+        if (data.points < data.items[$(e).attr("id")].price || data.items[$(e).attr("id")].maxquantity == data.items[$(e).attr("id")].quantity) return
         data.items[$(e).attr("id")].quantity += 1;
-        data.points -= parseInt($(e).find("span#price").attr("data-price"), 10)
+        data.points -= data.items[$(e).attr("id")].price
         update()
     })
 })
@@ -143,3 +139,4 @@ setInterval(() => {
     $(".pps").html(`pps: ${nFormatter(data.points - data.pointsbefore, 2)}`)
     data.pointsbefore = data.points
 }, 1000)
+//})

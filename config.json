@@ -1,0 +1,17 @@
+{
+    "points": 0,
+    "pointsbefore": null,
+    "items": {
+      "pointenhancer": {
+        "buff": {
+          "type": "clickUpgrd",
+          "value": 2
+        },
+        "quantity": 0,
+        "maxquantity": 5,
+        "price": 50,
+        "title": "Point enhancer",
+        "description": "Enhances your coins mined through button,<br>+2p when clicking button."
+      }
+    }
+  }
